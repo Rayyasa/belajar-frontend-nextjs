@@ -9,32 +9,64 @@ import Latihan from './components/Latihan';
 import Button from './components/Button';
 import Note from './components/Note';
 import Container from './components/container';
+import InputText from './components/InputText';
+
+
 // Function Component
 export default function Home() {
 return (
-    <div className=''>
-      <NavBar/>
-      <Main/>
-      <Container>
-      <Latihan nama={'Rayya'} kelas={'XI-RPL'} ttl={'Jakarta, 16 November 2006'} umur={16} isSiswa={true}/>
-      {/* <Latihan nama={'Rayya'} kelas={'XI-RPL'} ttl={'Jakarta, 16 Novemver 2006'} umur={16} isSiswa/>
-      <Latihan nama={'Rayya'} kelas={'XI-RPL'} ttl={'Jakarta, 16 Novemver 2006'} umur={16} isSiswa={false}/> */}
-      <Button title={'Simpan'} isDisabled={false}/>
-      <Button title={'Hapus'} isDisabled={true}/>
-      <Note title={'Belajar Next Js'}  status={'warning'}>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse soluta rerum assumenda atque voluptas obcaecati debitis placeat ad molestias nam.</p>
-        <Button title={'simpan'} isDisabled={true}/>
-      </Note>
-      <Note title={'Belajar React Js'}  status={'success'}>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum possimus ex dolore error itaque velit eius doloribus voluptatibus non ipsam!</p>
-        <Button title={'Simpan'} isDisabled/>
-      </Note>
-      <Note title={'Belajar Flutter'}  status={'error'}>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum possimus ex dolore error itaque velit eius doloribus voluptatibus non ipsam!</p>
-        <Button title={'Simpan'} isDisabled={false}/>
-      </Note>
-      </Container>
-      <Footer/>
+  <main className="space-y-5">
+  <h1>Hello World</h1>
+
+  <InputText
+        placeholder="username"
+        type="text"
+        isError
+        messageError="Username not empty"
+      />
+      <InputText placeholder="******" type="passoword" isError />
+      <InputText
+        value={12}
+        onChange={() => {
+          console.log("ok");
+        }}
+      />
+
+
+  <Button title="Simpan" isDisabled={false} />
+  <Button title="cancel" isDisabled={true} />
+  <Note title="Belajar ReactJS" status="warning">
+    <p>Saya belajar React</p>
+  </Note>
+  <Note title="Belajar TypeScript" status="warning">
+    <div className="bg-blue-500">
+      <p className="text-white">Saya sedang belajar TypeScript</p>
     </div>
-  )
+  </Note>
+
+  <Note title="Belajar NestJS" status="warning">
+    <div className="bg-green-500">
+      <p className="text-white">
+        Saya sedang belajar NestJS untuk menjadi backend developer
+      </p>
+    </div>
+  </Note>
+
+  <Note title='Belajar Front End' status='success'>
+    <div className="bg-slate-500">
+      <p className="text-white">
+        Saya sedang belajar Front End Development
+      </p>
+    </div>
+  </Note>
+  <Note title='Belajar Front End' status='error'>
+    <div className="bg-slate-500">
+      <p className="text-white">
+        Saya sedang belajar Front End Development
+      </p>
+    </div>
+  </Note>
+
+</main>
+  );
 }

@@ -7,6 +7,7 @@ interface Props {
 }
 
 function Latihan(props:Props) {
+  console.log(props);
   return (
     <div className="container border border-red-400 mb-5 pb-5 shadow-lg">
       <dl>

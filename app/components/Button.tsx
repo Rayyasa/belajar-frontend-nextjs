@@ -3,7 +3,7 @@ interface ButtonProps {
   isDisabled: boolean;
 }
 
-const Button: React.FC<ButtonProps> = ({ title, isDisabled }) => {
+const Button: React.FC<ButtonProps> = ({ title, isDisabled = false }) => {
   return (
     <button
       disabled={isDisabled}
@@ -13,6 +13,5 @@ const Button: React.FC<ButtonProps> = ({ title, isDisabled }) => {
     </button>
   );
 };
-
 
 export default Button;

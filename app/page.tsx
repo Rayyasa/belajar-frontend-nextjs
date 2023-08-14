@@ -152,9 +152,6 @@ const Home = () => {
         <Button title="batal" isDisabled={false} variant="solid" colorSchema="red" />
       </section>
     </main>
-
-
-
   );
 };
 

@@ -11,7 +11,6 @@
 // import Container from './components/container';
 // import InputText from './components/InputText';
 
-
 // // Function Component
 // export default function Home() {
 // return (
@@ -31,7 +30,6 @@
 //           console.log("ok");
 //         }}
 //       />
-
 
 //   <Button title="Simpan" isDisabled={false} />
 //   <Button title="cancel" isDisabled={true} />
@@ -71,88 +69,97 @@
 //   );
 // }
 
-"use client"
+//
+
+"use client";
+import { useState } from "react";
+import Button from "./components/Latihan2";
 import InputText from "./components/Latihan1";
 import Label from "./components/Label";
-import Button from "./components/Latihan2";
 
+export type Identitas = {
+  nama: string;
+  sekolah: string;
+  umur: number | null;
+};
+
+export type Hasil = {
+  mata_pelajaran: string;
+  nilai: number | null;
+};
 
 const Home = () => {
+  let [message, setMessage] = useState("hai!");
+  let [count, setCount] = useState(0);
+  let [isLogin, setIslogin] = useState(false);
   return (
     <main className="space-y-5">
-      <h1>Hello World</h1>
+      <h1 className="text-center">Hello World!</h1>
+      <h1 className="text-lg m-2">{message}</h1>
+      <Button
+        title="Rayya"
+        colorSchema="red"
+        variant="solid"
+        onClick={() => {
+          setMessage("Hello Rayya!");
+        }}
+      />
+      <Button
+        title="Hilmi"
+        colorSchema="blue"
+        variant="solid"
+        onClick={() => {
+          setMessage("Hello Hilmi!");
+        }}
+      />
+      <h1 className="text-lg m-2">{count}</h1>
+      <Button
+        title="tambah"
+        colorSchema="red"
+        variant="solid"
+        onClick={() => {
+          setCount((prevCount) => {
+            console.log("State Saat ini", prevCount);
+            return prevCount + 1;
+          });
+        }}
+      />
+      <Button
+        isDisabled={count === 0 ? true : false}
+        title="Kurang"
+        colorSchema="blue"
+        variant="solid"
+        onClick={() => {
+          setCount((prevCount) => prevCount - 1);
+        }}
+      />
 
-      <section>
-        <Label title="username" htmlFor="username" isRequired />
-        <InputText
-          id="username"
-          name="username"
-          value={"ihsanabuhanifah"}
-          placeholder="username"
-          type="text"
-          messageError="Username not empty"
-        />
-      </section>
-      <section>
-        <Label title="password" htmlFor="password" isRequired />
-        <InputText
-          id="password"
-          name="password"
-          value={"12345678"}
-          placeholder="******"
-          type="password"
-        />
-      </section>
-
-      <section>
-        <Label title="name" htmlFor="name" />
-        <InputText
-          id="Name"
-          name="name"
-          value={"ihsan"}
-          onChange={() => {
-            console.log("ok");
+      <h1 className="text-lg m-2 text-red-500">{isLogin ? "Sudah Login" : "Belum Login"}</h1>
+      <Button
+        title="LogOut"
+        variant="solid"
+        colorSchema="red"
+        onClick={() => {
+          setIslogin(false);
+        }}
+      />
+      <Button
+        title="Login"
+        variant="solid"
+        colorSchema="blue"
+        onClick={() => {
+          setIslogin(true);
+        }}
+      />
+          <Button 
+          title={isLogin ? "Sign Out" : "Sign In"}
+          colorSchema={isLogin ? "red" : "blue"}
+          variant="solid"
+          onClick={() => {
+            setIslogin(!isLogin);
           }}
         />
-      </section>
-
-      <section className="space-x-5">
-        <Button
-          title="simpan"
-          isDisabled={false}
-          variant="solid"
-          colorSchema="blue"
-        />
-         <Button
-          title="simpan"
-          isDisabled={true}
-          variant="solid"
-          colorSchema="blue"
-        />
-        <Button
-          title="Update"
-          isDisabled={false}
-          variant="outline"
-          colorSchema="blue"
-        />
-         <Button
-          title="Update"
-          isDisabled={true}
-          variant="outline"
-          colorSchema="blue"
-        />
-        <Button
-          title="Draft"
-          isDisabled={false}
-          variant="outline"
-          colorSchema="green"
-        />
-
-        <Button title="batal" isDisabled variant="solid" colorSchema="red" />
-        <Button title="batal" isDisabled={false} variant="solid" colorSchema="red" />
-      </section>
     </main>
   );
 };
-
 export default Home;

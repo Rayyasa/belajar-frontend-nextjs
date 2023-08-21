@@ -71,6 +71,9 @@
 
 //
 
+
+//State
+
 "use client";
 import { useState } from "react";
 import Button from "./components/Latihan2";
@@ -81,6 +84,7 @@ export type Identitas = {
   nama: string;
   sekolah: string;
   umur: number | null;
+  alamat? : string;
 };
 
 export type Hasil = {
@@ -92,10 +96,68 @@ const Home = () => {
   let [message, setMessage] = useState("hai!");
   let [count, setCount] = useState(0);
   let [isLogin, setIslogin] = useState(false);
+  let [profile, setProfile] = useState<Identitas>({
+    nama: "Rayya",
+    umur: 16,
+    sekolah: 'Smk mq',
+  });
+  let [hasil, setHasil] = useState<Hasil[]>([
+    {
+      mata_pelajaran: "Matematika",
+      nilai: 80,
+    },
+    {
+      mata_pelajaran: "Fisika",
+      nilai: 90,
+    },
+    {
+      mata_pelajaran: "Kimia",
+      nilai: 95,
+    },
+  ]);
   return (
     <main className="space-y-5">
       <h1 className="text-center">Hello World!</h1>
       <h1 className="text-lg m-2">{message}</h1>
+      <h1 className="text-red-500 font-bold text-2xl">
+        Nama adalah : {profile.nama}, sekolah di {profile.sekolah} dan berumur {" "} {profile.umur} dan rumah di {profile.alamat || "-"}
+      </h1>
+      <Button
+        title="tambah alamat"
+        colorSchema="red"
+        variant="solid"
+        onClick={() => {
+          setProfile((prevProfile) => {
+            return {
+              ...prevProfile,
+              nama: "Rayya Disayidan",
+              alamat: "Jakut",
+            }
+          })
+        }}
+      />
+      <Button
+        title="Kembali ke Default"
+        colorSchema="blue"
+        variant="solid"
+        onClick={() => {
+          setProfile((prevProfile) => {
+            return {
+              nama: "Rayya",
+              sekolah: "Smk mq",
+              umur: 16
+            }
+          })
+        }}
+      />
+
+      <div className="">
+        <h2>Daftar Nilai</h2>
+        {}
+      </div>
+
+
+      <div>
       <Button
         title="Rayya"
         colorSchema="red"
@@ -112,6 +174,7 @@ const Home = () => {
           setMessage("Hello Hilmi!");
         }}
       />
+      </div>
       <h1 className="text-lg m-2">{count}</h1>
       <Button
         title="tambah"
@@ -163,3 +226,66 @@ const Home = () => {
   );
 };
 export default Home;
+
+
+//Latihan State
+
+// "use client";
+// import { useState } from "react";
+// import BelajarState from "./components/module/belajarState";
+// import Card from "./components/latihan/Card";
+// import Button from "./components/Latihan2";
+// import InputText from "./components/Latihan1";
+// import exp from "constants";
+
+// export type Identitas = {
+//   nama :string;
+//   sekolah: string;
+//   umur: number | null;
+// };
+
+// export type Hasil = {
+//   mata_pelajaran: string;
+//   nilai: number | null;
+// };
+
+// const Home = () => {
+//   let [tanggal, setTanggal] = useState(0);
+//   let [bulan, setBulan] = useState('Agustus');
+
+//   return (
+//     <main className="space-y-5 m-4">
+//       <h1>Latihan</h1>
+//       <Card
+//         bulan={bulan}
+//         tanggal={tanggal}
+//         setTanggal={setTanggal}
+//         setBulan={setBulan}
+//       />
+//       <Button
+//         onClick={() => {
+//           setTanggal((c) => c + 1);
+//         }}
+//         colorSchema="blue"
+//         title="tambah"
+//       />
+//       <Button
+//       isDisabled={tanggal === 0 ? true : false}
+//         onClick={() => {
+//           setTanggal((c) => c - 1);
+//         }}
+//         colorSchema="red"
+//         title="kurang"
+//       />
+//       <InputText
+//         id="bulan"
+//         name={"bulan"}
+//         value={bulan}
+//         onChange={(e) => {
+//           setBulan(e.target.value);
+//         }}
+//       />
+//     </main>
+//   );
+// };
+// export default Home

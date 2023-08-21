@@ -71,162 +71,159 @@
 
 //
 
-
 //State
 
-"use client";
-import { useState } from "react";
-import Button from "./components/Latihan2";
-import InputText from "./components/Latihan1";
-import Label from "./components/Label";
+// "use client";
+// import { useState } from "react";
+// import Button from "./components/Latihan2";
+// import InputText from "./components/Latihan1";
+// import Label from "./components/Label";
 
-export type Identitas = {
-  nama: string;
-  sekolah: string;
-  umur: number | null;
-  alamat? : string;
-};
+// export type Identitas = {
+//   nama: string;
+//   sekolah: string;
+//   umur: number | null;
+//   alamat? : string;
+// };
 
-export type Hasil = {
-  mata_pelajaran: string;
-  nilai: number | null;
-};
+// export type Hasil = {
+//   mata_pelajaran: string;
+//   nilai: number | null;
+// };
 
-const Home = () => {
-  let [message, setMessage] = useState("hai!");
-  let [count, setCount] = useState(0);
-  let [isLogin, setIslogin] = useState(false);
-  let [profile, setProfile] = useState<Identitas>({
-    nama: "Rayya",
-    umur: 16,
-    sekolah: 'Smk mq',
-  });
-  let [hasil, setHasil] = useState<Hasil[]>([
-    {
-      mata_pelajaran: "Matematika",
-      nilai: 80,
-    },
-    {
-      mata_pelajaran: "Fisika",
-      nilai: 90,
-    },
-    {
-      mata_pelajaran: "Kimia",
-      nilai: 95,
-    },
-  ]);
-  return (
-    <main className="space-y-5">
-      <h1 className="text-center">Hello World!</h1>
-      <h1 className="text-lg m-2">{message}</h1>
-      <h1 className="text-red-500 font-bold text-2xl">
-        Nama adalah : {profile.nama}, sekolah di {profile.sekolah} dan berumur {" "} {profile.umur} dan rumah di {profile.alamat || "-"}
-      </h1>
-      <Button
-        title="tambah alamat"
-        colorSchema="red"
-        variant="solid"
-        onClick={() => {
-          setProfile((prevProfile) => {
-            return {
-              ...prevProfile,
-              nama: "Rayya Disayidan",
-              alamat: "Jakut",
-            }
-          })
-        }}
-      />
-      <Button
-        title="Kembali ke Default"
-        colorSchema="blue"
-        variant="solid"
-        onClick={() => {
-          setProfile((prevProfile) => {
-            return {
-              nama: "Rayya",
-              sekolah: "Smk mq",
-              umur: 16
-            }
-          })
-        }}
-      />
+// const Home = () => {
+//   let [message, setMessage] = useState("hai!");
+//   let [count, setCount] = useState(0);
+//   let [isLogin, setIslogin] = useState(false);
+//   let [profile, setProfile] = useState<Identitas>({
+//     nama: "Rayya",
+//     umur: 16,
+//     sekolah: 'Smk mq',
+//   });
+//   let [hasil, setHasil] = useState<Hasil[]>([
+//     {
+//       mata_pelajaran: "Matematika",
+//       nilai: 80,
+//     },
+//     {
+//       mata_pelajaran: "Fisika",
+//       nilai: 90,
+//     },
+//     {
+//       mata_pelajaran: "Kimia",
+//       nilai: 95,
+//     },
+//   ]);
+//   return (
+//     <main className="space-y-5">
+//       <h1 className="text-center">Hello World!</h1>
+//       <h1 className="text-lg m-2">{message}</h1>
+//       <h1 className="text-red-500 font-bold text-2xl">
+//         Nama adalah : {profile.nama}, sekolah di {profile.sekolah} dan berumur {" "} {profile.umur} dan rumah di {profile.alamat || "-"}
+//       </h1>
+//       <Button
+//         title="tambah alamat"
+//         colorSchema="red"
+//         variant="solid"
+//         onClick={() => {
+//           setProfile((prevProfile) => {
+//             return {
+//               ...prevProfile,
+//               nama: "Rayya Disayidan",
+//               alamat: "Jakut",
+//             }
+//           })
+//         }}
+//       />
+//       <Button
+//         title="Kembali ke Default"
+//         colorSchema="blue"
+//         variant="solid"
+//         onClick={() => {
+//           setProfile((prevProfile) => {
+//             return {
+//               nama: "Rayya",
+//               sekolah: "Smk mq",
+//               umur: 16
+//             }
+//           })
+//         }}
+//       />
 
-      <div className="">
-        <h2>Daftar Nilai</h2>
-        {}
-      </div>
+//       <div className="">
+//         <h2>Daftar Nilai</h2>
+//         {}
+//       </div>
 
+//       <div>
+//       <Button
+//         title="Rayya"
+//         colorSchema="red"
+//         variant="solid"
+//         onClick={() => {
+//           setMessage("Hello Rayya!");
+//         }}
+//       />
+//       <Button
+//         title="Hilmi"
+//         colorSchema="blue"
+//         variant="solid"
+//         onClick={() => {
+//           setMessage("Hello Hilmi!");
+//         }}
+//       />
+//       </div>
+//       <h1 className="text-lg m-2">{count}</h1>
+//       <Button
+//         title="tambah"
+//         colorSchema="red"
+//         variant="solid"
+//         onClick={() => {
+//           setCount((prevCount) => {
+//             console.log("State Saat ini", prevCount);
+//             return prevCount + 1;
+//           });
+//         }}
+//       />
+//       <Button
+//         isDisabled={count === 0 ? true : false}
+//         title="Kurang"
+//         colorSchema="blue"
+//         variant="solid"
+//         onClick={() => {
+//           setCount((prevCount) => prevCount - 1);
+//         }}
+//       />
 
-      <div>
-      <Button
-        title="Rayya"
-        colorSchema="red"
-        variant="solid"
-        onClick={() => {
-          setMessage("Hello Rayya!");
-        }}
-      />
-      <Button
-        title="Hilmi"
-        colorSchema="blue"
-        variant="solid"
-        onClick={() => {
-          setMessage("Hello Hilmi!");
-        }}
-      />
-      </div>
-      <h1 className="text-lg m-2">{count}</h1>
-      <Button
-        title="tambah"
-        colorSchema="red"
-        variant="solid"
-        onClick={() => {
-          setCount((prevCount) => {
-            console.log("State Saat ini", prevCount);
-            return prevCount + 1;
-          });
-        }}
-      />
-      <Button
-        isDisabled={count === 0 ? true : false}
-        title="Kurang"
-        colorSchema="blue"
-        variant="solid"
-        onClick={() => {
-          setCount((prevCount) => prevCount - 1);
-        }}
-      />
-
-      <h1 className="text-lg m-2 text-red-500">{isLogin ? "Sudah Login" : "Belum Login"}</h1>
-      <Button
-        title="LogOut"
-        variant="solid"
-        colorSchema="red"
-        onClick={() => {
-          setIslogin(false);
-        }}
-      />
-      <Button
-        title="Login"
-        variant="solid"
-        colorSchema="blue"
-        onClick={() => {
-          setIslogin(true);
-        }}
-      />
-          <Button 
-          title={isLogin ? "Sign Out" : "Sign In"}
-          colorSchema={isLogin ? "red" : "blue"}
-          variant="solid"
-          onClick={() => {
-            setIslogin(!isLogin);
-          }}
-        />
-    </main>
-  );
-};
-export default Home;
-
+//       <h1 className="text-lg m-2 text-red-500">{isLogin ? "Sudah Login" : "Belum Login"}</h1>
+//       <Button
+//         title="LogOut"
+//         variant="solid"
+//         colorSchema="red"
+//         onClick={() => {
+//           setIslogin(false);
+//         }}
+//       />
+//       <Button
+//         title="Login"
+//         variant="solid"
+//         colorSchema="blue"
+//         onClick={() => {
+//           setIslogin(true);
+//         }}
+//       />
+//           <Button
+//           title={isLogin ? "Sign Out" : "Sign In"}
+//           colorSchema={isLogin ? "red" : "blue"}
+//           variant="solid"
+//           onClick={() => {
+//             setIslogin(!isLogin);
+//           }}
+//         />
+//     </main>
+//   );
+// };
+// export default Home;
 
 //Latihan State
 
@@ -288,4 +285,297 @@ export default Home;
 //     </main>
 //   );
 // };
-// export default Home
+// export default Home;
+
+"use client"; // gunakan use client karena ada onChange pda komponen
+import { useState } from "react";
+import Button from "./components/Latihan2";
+import Kartu from "./components/Kartu";
+
+// export type Identitas = {
+//   nama: string;
+//   sekolah: string;
+//   umur: number | null;
+// };
+
+// export type Hasil = {
+//   mata_pelajaran: string;
+//   nilai: number | null;
+// };
+
+// export type Buah = {
+//   nama_buah: string;
+// }
+
+// const Home = () => {
+//   let [message, setMessage] = useState("hai"); // jika string, dengan data awal "hai"
+//   let [count, setCount] = useState(0); // jika number , dengan data awal 0
+//   let [isLogin, setIsLogin] = useState(false); // jika booelan, dengan data awal false
+//   let [profile, setProfile] = useState<Identitas>({
+//     // jika sebuah object
+//     nama: "Rayya Disayidan",
+//     sekolah: "SMK Madinatul Qur'an",
+//     umur: 16,
+//   });
+
+//   let [hasil, setHasil] = useState<Hasil[]>([
+//     {
+//       mata_pelajaran: "Matematika",
+//       nilai: 80,
+//     },
+//     {
+//       mata_pelajaran: "Fisika",
+//       nilai: 90,
+//     },
+//     {
+//       mata_pelajaran: "Kimia",
+//       nilai: 95,
+//     },
+//   ]); // jika sebuah array dengan data awal array kosong
+
+//   let bilangan = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+//   // let buah = ["Apel", "Pisang", "Mangga", "Pir"];
+
+//   let [buah, setBuah] = useState<Buah[]>([
+//     {
+//       nama_buah: "apel"
+//     },
+//     {
+//       nama_buah: "Mangga"
+//     },
+//     {
+//       nama_buah: "Pisang"
+//     },
+//     {
+//       nama_buah: "Durian"
+//     },
+//   ])
+
+//   return (
+//     <main className="space-y-5">
+//       <h1>Hello World</h1>
+//       <p>message addalah {message}</p>{" "}
+//       <Button
+//         title="Hello"
+//         variant="solid"
+//         colorSchema="blue"
+//         onClick={() => {
+//           setMessage("Hello");
+//         }}
+//       />
+//       <Button
+//         title="Salam"
+//         variant="outline"
+//         colorSchema="blue"
+//         onClick={() => {
+//           setMessage("Assalamualaikum");
+//         }}
+//       />
+//       <p>Count adalah {count}</p>
+//       <Button
+//         title="Tambah"
+//         variant="solid"
+//         colorSchema="blue"
+//         onClick={() => {
+//           setCount((prevCount) => prevCount + 1);
+//         }}
+//       />
+//       <Button
+//         title="Kurang"
+//         isDisabled={count < 1}
+//         variant="solid"
+//         colorSchema="red"
+//         onClick={() => {
+//           setCount((prevCount) => prevCount - 1);
+//         }}
+//       />
+//       <p> {isLogin ? "Sudah Login" : "Belum Login"}</p>
+//       <Button
+//         title="Login"
+//         isDisabled={isLogin === true}
+//         variant="solid"
+//         colorSchema="blue"
+//         onClick={() => {
+//           setIsLogin(true);
+//         }}
+//       />
+//       <Button
+//         title="Logout"
+//         isDisabled={isLogin === false}
+//         variant="solid"
+//         colorSchema="red"
+//         onClick={() => {
+//           setIsLogin(false);
+//         }}
+//       />
+//       <div className="flex flex-col">
+//         <h5>Nama : {profile.nama}</h5>
+//         <h5>Sekolah : {profile.sekolah}</h5>
+//         <h5>Umur : {profile.umur}</h5>
+//       </div>
+//       <Button
+//         title="Ubah Nama"
+//         variant="solid"
+//         colorSchema="blue"
+//         onClick={() => {
+//           setProfile((prevProfile) => {
+//             return {
+//               ...prevProfile,
+//               nama: "Ilham Maulana Fikri",
+//             };
+//           });
+//         }}
+//       />
+//       <Button
+//         title="Update"
+//         variant="solid"
+//         colorSchema="blue"
+//         onClick={() => {
+//           setProfile((prevProfile) => {
+//             return {
+//               ...prevProfile,
+//               sekolah: "SMK MADINATULQURAN",
+//             };
+//           });
+//         }}
+//       />
+//       <Button
+//         title="Kembali Ke Default"
+//         variant="solid"
+//         colorSchema="red"
+//         onClick={() => {
+//           setProfile((prevProfile) => {
+//             return {
+//               nama: "Rayya Disayidan",
+//               sekolah: "SMK Madinatul Qur'an",
+//               umur: 16,
+//             };
+//           });
+//         }}
+//       />
+//       <div className="m-2">
+//         <h2>Daftar Nilai</h2>
+//         {hasil.map((n, index) => (
+//           <section key={index}>
+//             <h5>Nama Mata pelajaran : {n.mata_pelajaran} </h5>
+//             <h5>Nilai : {n.nilai} </h5>
+//           </section>
+//         ))} 
+        
+//         <div>
+//           <Button
+//           title="Tambah"
+//           variant="solid"
+//           colorSchema="blue"
+//           onClick={() => {
+//             setHasil((prevHasil) => {
+//               return [
+//                 ...prevHasil,
+//                 {
+//                   mata_pelajaran: "B. Indonesia",
+//                   nilai: 100,
+//                 },
+//                 {
+//                   mata_pelajaran: "Pemograman Dasar",
+//                   nilai: 95,
+//                 },
+//               ];
+//             });
+//           }}
+//         />
+//         <Button
+//           title="Kurang"
+//           isDisabled={hasil.length <= 1}
+//           variant="solid"
+//           colorSchema="red"
+//           onClick={() => {
+//             setHasil((prevHasil) => {
+//               prevHasil.pop();
+//               return [...prevHasil];
+//             });
+//           }}
+//         />
+//         </div>
+
+//         {/* {bilangan.map((item, index) => (
+//           <h1 key={index}>{item}</h1>
+//         ))} */}
+        
+//         {buah.map((i ,index) =>(
+//           <section key={index}>
+//             <h6>Nama Buah index ke {index} adalah {i.nama_buah}</h6>
+//           </section>
+//         ))}
+      
+//       <Button
+//           title="Tambah Buah"
+//           variant="solid"
+//           colorSchema="blue"
+//           onClick={() => {
+//             setBuah((prevBuah) => {
+//               return [
+//                 ...prevBuah,
+//                 {
+//                   nama_buah: "Kiwi"
+//                 },
+//                 {
+//                  nama_buah: "Dukuh"
+//                 },
+//                 {
+//                   nama_buah: "Mengkudu"
+//                 },
+//                 {
+//                  nama_buah: "Sirsak"
+//                 },
+//               ];
+//             });
+//           }}
+//         />
+//            <Button
+//           title="Kurangi Buah"
+//           isDisabled={buah.length <= 1}
+//           variant="solid"
+//           colorSchema="red"
+//           onClick={() => {
+//             setBuah((prevBuah) => {
+//               prevBuah.pop();
+//               return [...prevBuah];
+//             });
+//           }}
+//         />
+       
+//       </div>
+//     </main>
+//   );
+// };
+
+// export default Home;
+
+
+export type Hasil = {
+  mata_pelajaran : string;
+  nilai: number;
+};
+
+const Home = () => {
+  let [hasil, setHasil] = useState<Hasil[]>([
+          {
+            mata_pelajaran: "Matematika",
+            nilai: 80,
+          },
+          {
+            mata_pelajaran: "Fisika",
+            nilai: 90,
+          },
+          {
+            mata_pelajaran: "Kimia",
+            nilai: 95,
+          },
+        ])
+  return (
+    <main>
+      
+    </main>
+  )
+}

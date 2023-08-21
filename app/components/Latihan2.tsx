@@ -4,14 +4,14 @@ import React, { ButtonHTMLAttributes } from "react";
 type Variant = "solid" | "outline";
 type ColorSchema = "blue" | "red" | "green";
 interface ButtonProps {
-  title: string;
+  title: string | number;
   isDisabled?: boolean;
   variant?: Variant;
   colorSchema: ColorSchema;
   width? : 24
 }
 
-function Button({ title, variant = "solid", width = 24 ,colorSchema, isDisabled,...props }: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+function Button({ title, variant = "solid",colorSchema, isDisabled,...props }: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
       disabled={isDisabled}

@@ -291,6 +291,8 @@
 import { useState } from "react";
 import Button from "./components/Latihan2";
 import Kartu from "./components/Kartu";
+import { json } from "stream/consumers";
+import { data } from "autoprefixer";
 
 // export type Identitas = {
 //   nama: string;
@@ -555,27 +557,168 @@ import Kartu from "./components/Kartu";
 
 export type Hasil = {
   mata_pelajaran : string;
-  nilai: number;
+  nilai: string;
 };
 
 const Home = () => {
-  let [hasil, setHasil] = useState<Hasil[]>([
-          {
-            mata_pelajaran: "Matematika",
-            nilai: 80,
-          },
-          {
-            mata_pelajaran: "Fisika",
-            nilai: 90,
-          },
-          {
-            mata_pelajaran: "Kimia",
-            nilai: 95,
-          },
-        ])
+  let [data, setData] = useState<Hasil>({
+    mata_pelajaran: "",
+    nilai: "",
+  });
+
+  let [pelajaran, setPelajaran] = useState<Hasil[]>([
+    {
+      mata_pelajaran: "kimia",
+      nilai: "70",
+    },
+  ]);
+
   return (
-    <main>
-      
-    </main>
+    <main className="space-y-5">
+      {/* <h1>Latihan</h1> */}
+      {JSON.stringify(data)}
+      {/* <Card mata_pelajaran="Matematika" nilai={90} /> */}
+
+      {pelajaran.map((item, i) => {
+        return (
+          <Kartu
+            mata_pelajaran={item.mata_pelajaran}
+            nilai={item.nilai}
+            key={i}
+          />
+        );
+      })}
+
+      <div className="flex flex-grid gap-5">
+        <Button
+          title="Fisika"
+          variant="solid"
+          colorSchema="blue"
+          isDisabled={data.mata_pelajaran=== "fisika"}
+          onClick={() => {
+            setData((prev) => {
+              return {
+                ...prev,
+                mata_pelajaran: "fisika",
+              };
+            });
+          }}
+        />
+        <Button
+          title="Biologi"
+          isDisabled={data.mata_pelajaran === "biologi"}
+          variant="solid"
+          colorSchema="green"
+          onClick={() => {
+            setData((prev) => {
+              return {
+                ...prev,
+                mata_pelajaran: "biologi",
+              };
+            });
+          }}
+        />
+        <Button
+          title="Kimia"
+          isDisabled={data.mata_pelajaran === "kimia"}
+          variant="solid"
+          colorSchema="red"
+          onClick={() => {
+            setData((prev) => {
+              return {
+                ...prev,
+                mata_pelajaran: "kimia",
+              };
+            });
+          }}
+        />
+      </div>
+
+      <div className="flex flex-grid gap-5">
+        <Button
+          title="70"
+          colorSchema="red"
+          variant="solid"
+          isDisabled={data.nilai === "70"}
+          onClick={() => {
+            setData((prev) => {
+              return {
+                ...prev,
+                nilai: "70",
+              };
+            });
+          }}
+        />
+        <Button
+          title="80"
+          colorSchema="red"
+          variant="solid"
+          isDisabled={data.nilai === "80"}
+          onClick={() => {
+            setData((prev) => {
+              return {
+                ...prev,
+                nilai: "80",
+              };
+            });
+          }}
+        />
+        <Button
+          title="90"
+          colorSchema="blue"
+          variant="solid"
+          isDisabled={data.nilai === "90"}
+          onClick={() => {
+            setData((prev) => {
+              return {
+                ...prev,
+                nilai: "90",
+              };
+            });
+          }}
+        />
+        <Button
+          title="100"
+          colorSchema="green"
+          variant="solid"
+          isDisabled={data.nilai === "100"}
+          onClick={() => {
+            setData((prev) => {
+              return {
+                ...prev,
+                nilai: "100",
+              };
+            });
+          }}
+        />
+      </div>
+
+      <Button
+        title="Simpan"
+        colorSchema="red"
+        variant="solid"
+        isDisabled={data.mata_pelajaran == "" || data.nilai == ""}
+        onClick={() => {
+          setPelajaran((prev) => {
+            return [
+              ...prev,
+              {
+                mata_pelajaran: data.mata_pelajaran,
+                nilai: data.nilai,
+              },
+            ];
+          });
+          setData((prev) => {
+            return {
+              ...prev,
+              mata_pelajaran: "",
+              nilai: "",
+            };
+          });
+        }}
+      />
+
+</main> 
   )
 }
+export default Home;

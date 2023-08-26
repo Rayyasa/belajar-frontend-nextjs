@@ -8,7 +8,8 @@ interface ButtonProps {
   isDisabled?: boolean;
   variant?: Variant;
   colorSchema: ColorSchema;
-  width? : 24
+  width? : 24;
+  onDelete?: () => void;
 }
 
 function Button({ title, variant = "solid",colorSchema, isDisabled,...props }: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {

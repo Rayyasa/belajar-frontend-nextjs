@@ -463,8 +463,8 @@ import { data } from "autoprefixer";
 //             <h5>Nama Mata pelajaran : {n.mata_pelajaran} </h5>
 //             <h5>Nilai : {n.nilai} </h5>
 //           </section>
-//         ))} 
-        
+//         ))}
+
 //         <div>
 //           <Button
 //           title="Tambah"
@@ -503,13 +503,13 @@ import { data } from "autoprefixer";
 //         {/* {bilangan.map((item, index) => (
 //           <h1 key={index}>{item}</h1>
 //         ))} */}
-        
+
 //         {buah.map((i ,index) =>(
 //           <section key={index}>
 //             <h6>Nama Buah index ke {index} adalah {i.nama_buah}</h6>
 //           </section>
 //         ))}
-      
+
 //       <Button
 //           title="Tambah Buah"
 //           variant="solid"
@@ -546,7 +546,7 @@ import { data } from "autoprefixer";
 //             });
 //           }}
 //         />
-       
+
 //       </div>
 //     </main>
 //   );
@@ -554,10 +554,10 @@ import { data } from "autoprefixer";
 
 // export default Home;
 
-
 export type Hasil = {
-  mata_pelajaran : string;
+  mata_pelajaran: string;
   nilai: string;
+  // onDelete?: () => void;
 };
 
 const Home = () => {
@@ -572,20 +572,34 @@ const Home = () => {
       nilai: "70",
     },
   ]);
+  const deleteCard = (index: number) => {
+    setPelajaran(prevPelajaran => {
+      const updatedPelajaran = [...prevPelajaran];
+      updatedPelajaran.splice(index, 1);
+      return updatedPelajaran;
+    });
+  };
 
   return (
-    <main className="space-y-5">
+    <main className="space-y-5 m-5">
       {/* <h1>Latihan</h1> */}
-      {JSON.stringify(data)}
+      {/* {JSON.stringify(data)} */}
       {/* <Card mata_pelajaran="Matematika" nilai={90} /> */}
 
       {pelajaran.map((item, i) => {
         return (
-          <Kartu
-            mata_pelajaran={item.mata_pelajaran}
-            nilai={item.nilai}
-            key={i}
-          />
+          <div key={i} className="bg-white shadow-xl rounded-lg p-4">
+            <h5 className="">Mata Pelajaran: {item.mata_pelajaran}</h5>
+            <h5 className="">Nilai: {item.nilai}</h5>
+            <div className="px-3 py-3">
+              <button
+                className="px-2 py-1 bg-red-500 text-white rounded"
+                onClick={() => deleteCard(i)}
+              >
+                Hapus
+              </button>
+            </div>
+          </div>
         );
       })}
 
@@ -594,7 +608,7 @@ const Home = () => {
           title="Fisika"
           variant="solid"
           colorSchema="blue"
-          isDisabled={data.mata_pelajaran=== "fisika"}
+          isDisabled={data.mata_pelajaran === "fisika"}
           onClick={() => {
             setData((prev) => {
               return {
@@ -717,8 +731,7 @@ const Home = () => {
           });
         }}
       />
-
-</main> 
-  )
-}
+    </main>
+  );
+};
 export default Home;

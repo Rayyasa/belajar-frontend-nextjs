@@ -287,19 +287,13 @@
 // };
 // export default Home;
 
-"use client"; // gunakan use client karena ada onChange pda komponen
-import { useState } from "react";
-import Button from "./components/Latihan2";
-import Kartu from "./components/Kartu";
-import { json } from "stream/consumers";
-import { data } from "autoprefixer";
 
 // export type Identitas = {
-//   nama: string;
-//   sekolah: string;
-//   umur: number | null;
-// };
-
+  //   nama: string;
+  //   sekolah: string;
+  //   umur: number | null;
+  // };
+  
 // export type Hasil = {
 //   mata_pelajaran: string;
 //   nilai: number | null;
@@ -310,23 +304,23 @@ import { data } from "autoprefixer";
 // }
 
 // const Home = () => {
-//   let [message, setMessage] = useState("hai"); // jika string, dengan data awal "hai"
-//   let [count, setCount] = useState(0); // jika number , dengan data awal 0
-//   let [isLogin, setIsLogin] = useState(false); // jika booelan, dengan data awal false
+  //   let [message, setMessage] = useState("hai"); // jika string, dengan data awal "hai"
+  //   let [count, setCount] = useState(0); // jika number , dengan data awal 0
+  //   let [isLogin, setIsLogin] = useState(false); // jika booelan, dengan data awal false
 //   let [profile, setProfile] = useState<Identitas>({
-//     // jika sebuah object
+  //     // jika sebuah object
 //     nama: "Rayya Disayidan",
 //     sekolah: "SMK Madinatul Qur'an",
 //     umur: 16,
 //   });
 
 //   let [hasil, setHasil] = useState<Hasil[]>([
-//     {
-//       mata_pelajaran: "Matematika",
+  //     {
+    //       mata_pelajaran: "Matematika",
 //       nilai: 80,
 //     },
 //     {
-//       mata_pelajaran: "Fisika",
+  //       mata_pelajaran: "Fisika",
 //       nilai: 90,
 //     },
 //     {
@@ -340,7 +334,7 @@ import { data } from "autoprefixer";
 //   // let buah = ["Apel", "Pisang", "Mangga", "Pir"];
 
 //   let [buah, setBuah] = useState<Buah[]>([
-//     {
+  //     {
 //       nama_buah: "apel"
 //     },
 //     {
@@ -355,15 +349,15 @@ import { data } from "autoprefixer";
 //   ])
 
 //   return (
-//     <main className="space-y-5">
-//       <h1>Hello World</h1>
-//       <p>message addalah {message}</p>{" "}
+  //     <main className="space-y-5">
+  //       <h1>Hello World</h1>
+  //       <p>message addalah {message}</p>{" "}
 //       <Button
 //         title="Hello"
 //         variant="solid"
 //         colorSchema="blue"
 //         onClick={() => {
-//           setMessage("Hello");
+  //           setMessage("Hello");
 //         }}
 //       />
 //       <Button
@@ -380,7 +374,7 @@ import { data } from "autoprefixer";
 //         variant="solid"
 //         colorSchema="blue"
 //         onClick={() => {
-//           setCount((prevCount) => prevCount + 1);
+  //           setCount((prevCount) => prevCount + 1);
 //         }}
 //       />
 //       <Button
@@ -389,7 +383,7 @@ import { data } from "autoprefixer";
 //         variant="solid"
 //         colorSchema="red"
 //         onClick={() => {
-//           setCount((prevCount) => prevCount - 1);
+  //           setCount((prevCount) => prevCount - 1);
 //         }}
 //       />
 //       <p> {isLogin ? "Sudah Login" : "Belum Login"}</p>
@@ -434,7 +428,7 @@ import { data } from "autoprefixer";
 //         variant="solid"
 //         colorSchema="blue"
 //         onClick={() => {
-//           setProfile((prevProfile) => {
+  //           setProfile((prevProfile) => {
 //             return {
 //               ...prevProfile,
 //               sekolah: "SMK MADINATULQURAN",
@@ -449,8 +443,8 @@ import { data } from "autoprefixer";
 //         onClick={() => {
 //           setProfile((prevProfile) => {
 //             return {
-//               nama: "Rayya Disayidan",
-//               sekolah: "SMK Madinatul Qur'an",
+  //               nama: "Rayya Disayidan",
+  //               sekolah: "SMK Madinatul Qur'an",
 //               umur: 16,
 //             };
 //           });
@@ -471,15 +465,15 @@ import { data } from "autoprefixer";
 //           variant="solid"
 //           colorSchema="blue"
 //           onClick={() => {
-//             setHasil((prevHasil) => {
+  //             setHasil((prevHasil) => {
 //               return [
-//                 ...prevHasil,
+  //                 ...prevHasil,
+  //                 {
+    //                   mata_pelajaran: "B. Indonesia",
+    //                   nilai: 100,
+    //                 },
 //                 {
-//                   mata_pelajaran: "B. Indonesia",
-//                   nilai: 100,
-//                 },
-//                 {
-//                   mata_pelajaran: "Pemograman Dasar",
+  //                   mata_pelajaran: "Pemograman Dasar",
 //                   nilai: 95,
 //                 },
 //               ];
@@ -492,9 +486,9 @@ import { data } from "autoprefixer";
 //           variant="solid"
 //           colorSchema="red"
 //           onClick={() => {
-//             setHasil((prevHasil) => {
-//               prevHasil.pop();
-//               return [...prevHasil];
+  //             setHasil((prevHasil) => {
+    //               prevHasil.pop();
+    //               return [...prevHasil];
 //             });
 //           }}
 //         />
@@ -505,7 +499,7 @@ import { data } from "autoprefixer";
 //         ))} */}
 
 //         {buah.map((i ,index) =>(
-//           <section key={index}>
+  //           <section key={index}>
 //             <h6>Nama Buah index ke {index} adalah {i.nama_buah}</h6>
 //           </section>
 //         ))}
@@ -517,7 +511,7 @@ import { data } from "autoprefixer";
 //           onClick={() => {
 //             setBuah((prevBuah) => {
 //               return [
-//                 ...prevBuah,
+  //                 ...prevBuah,
 //                 {
 //                   nama_buah: "Kiwi"
 //                 },
@@ -540,8 +534,8 @@ import { data } from "autoprefixer";
 //           variant="solid"
 //           colorSchema="red"
 //           onClick={() => {
-//             setBuah((prevBuah) => {
-//               prevBuah.pop();
+  //             setBuah((prevBuah) => {
+    //               prevBuah.pop();
 //               return [...prevBuah];
 //             });
 //           }}
@@ -553,6 +547,9 @@ import { data } from "autoprefixer";
 // };
 
 // export default Home;
+"use client"; // gunakan use client karena ada onChange pda komponen
+import { useState } from "react";
+import Button from "./components/Latihan2";
 
 export type Hasil = {
   mata_pelajaran: string;
@@ -582,10 +579,6 @@ const Home = () => {
 
   return (
     <main className="space-y-5 m-5">
-      {/* <h1>Latihan</h1> */}
-      {/* {JSON.stringify(data)} */}
-      {/* <Card mata_pelajaran="Matematika" nilai={90} /> */}
-
       {pelajaran.map((item, i) => {
         return (
           <div key={i} className="bg-white shadow-xl rounded-lg p-4">

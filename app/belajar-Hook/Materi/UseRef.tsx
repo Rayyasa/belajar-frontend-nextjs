@@ -10,18 +10,25 @@ export const BelajaruseReff = () => {
     targetAbout.current?.scrollIntoView({
       behavior: "smooth",
       block: "start",
-    })
+    });
   };
 
   const mouseEnter = () => {
     const text = document.createElement("div");
     text.className = "text-white bg-red-500 p-2";
-    const textnode = document.createTextNode('Selamat datang');
+    const textnode = document.createTextNode("Selamat datang");
     text.appendChild(textnode);
     targetAbout.current?.appendChild(text);
   };
 
-
+  const mouseLeave = () => {
+    const textElement = targetAbout.current?.querySelector(
+      ".text-white.bg-red-500"
+    );
+    if (textElement) {
+      targetAbout.current?.removeChild(textElement);
+    }
+  };
 
   return (
     <section className="h-screen w-screen">
@@ -43,7 +50,8 @@ export const BelajaruseReff = () => {
           <h1 className="text-white">Content </h1>
         </div>
         <div
-        onMouseEnter={mouseEnter}
+          onMouseEnter={mouseEnter}
+          onMouseLeave={mouseLeave}
           ref={targetAbout}
           className="min-h-screen bg-yellow-500 flex items-center justify-center"
         >

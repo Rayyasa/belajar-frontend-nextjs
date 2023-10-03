@@ -225,67 +225,68 @@
 // // };
 // // export default Home;
 
-// //Latihan State
+// Latihan State
 
-// // "use client";
-// // import { useState } from "react";
-// // import BelajarState from "./components/module/belajarState";
-// // import Card from "./components/latihan/Card";
-// // import Button from "./components/Latihan2";
-// // import InputText from "./components/Latihan1";
-// // import exp from "constants";
+"use client";
+import { useState } from "react";
+import Card from "./components/latihan/Card";
+import Button from "./components/Latihan2";
+import InputText from "./components/Latihan1";
+import useDebounce from "./Hook/useDebounce";
 
-// // export type Identitas = {
-// //   nama :string;
-// //   sekolah: string;
-// //   umur: number | null;
-// // };
+export type Identitas = {
+  nama: string;
+  sekolah: string;
+  umur: number | null;
+};
 
-// // export type Hasil = {
-// //   mata_pelajaran: string;
-// //   nilai: number | null;
-// // };
+export type Hasil = {
+  mata_pelajaran: string;
+  nilai: number | null;
+};
 
-// // const Home = () => {
-// //   let [tanggal, setTanggal] = useState(0);
-// //   let [bulan, setBulan] = useState('Agustus');
+const Home = () => {
+  let [tanggal, setTanggal] = useState(0);
+  let [bulan, setBulan] = useState("Agustus");
+  const { debouncedValue } = useDebounce(bulan, 1000);
 
-// //   return (
-// //     <main className="space-y-5 m-4">
-// //       <h1>Latihan</h1>
-// //       <Card
-// //         bulan={bulan}
-// //         tanggal={tanggal}
-// //         setTanggal={setTanggal}
-// //         setBulan={setBulan}
-// //       />
-// //       <Button
-// //         onClick={() => {
-// //           setTanggal((c) => c + 1);
-// //         }}
-// //         colorSchema="blue"
-// //         title="tambah"
-// //       />
-// //       <Button
-// //       isDisabled={tanggal === 0 ? true : false}
-// //         onClick={() => {
-// //           setTanggal((c) => c - 1);
-// //         }}
-// //         colorSchema="red"
-// //         title="kurang"
-// //       />
-// //       <InputText
-// //         id="bulan"
-// //         name={"bulan"}
-// //         value={bulan}
-// //         onChange={(e) => {
-// //           setBulan(e.target.value);
-// //         }}
-// //       />
-// //     </main>
-// //   );
-// // };
-// // export default Home;
+  return (
+    <main className="space-y-5 m-4">
+      <h1>Latihan</h1>
+      <Card
+        bulan={bulan}
+        tanggal={tanggal}
+        setTanggal={setTanggal}
+        setBulan={setBulan}
+      />
+      <Button
+        onClick={() => {
+          setTanggal((c) => c + 1);
+        }}
+        colorSchema="blue"
+        title="tambah"
+      />
+      <Button
+        isDisabled={tanggal === 0 ? true : false}
+        onClick={() => {
+          setTanggal((c) => c - 1);
+        }}
+        colorSchema="red"
+        title="kurang"
+      />
+      <InputText
+        id="bulan"
+        name={"bulan"}
+        value={bulan}
+        onChange={(e) => {
+          setBulan(e.target.value);
+        }}
+      />
+      {debouncedValue}
+    </main>
+  );
+};
+export default Home;
 
 // // export type Identitas = {
 //   //   nama: string;
@@ -744,3 +745,66 @@
 //   );
 // };
 // export default App;
+// import React from 'react'
+// import { Calc } from './calc'
+
+// const page = () => {
+//   return (
+// <div className="container mx-auto mt-10 p-5 border rounded">
+//       <input
+//         type="text"
+//         className="w-full p-2 mb-2 border rounded"
+//         value={expression}
+//         disabled
+//       />
+//       <input
+//         type="text"
+//         className="w-full p-2 border rounded"
+//         value={result}
+//         disabled
+//       />
+//       <div className="grid grid-cols-4 gap-2">
+//         {['7', '8', '9', '/'].map((value) => (
+//           <button
+//             key={value}
+//             onClick={() => handleButtonClick(value)}
+//             className="p-2 bg-gray-200 rounded hover:bg-gray-300"
+//           >
+//             {value}
+//           </button>
+//         ))}
+//         {['4', '5', '6', '*'].map((value) => (
+//           <button
+//             key={value}
+//             onClick={() => handleButtonClick(value)}
+//             className="p-2 bg-gray-200 rounded hover:bg-gray-300"
+//           >
+//             {value}
+//           </button>
+//         ))}
+//         {['1', '2', '3', '-'].map((value) => (
+//           <button
+//             key={value}
+//             onClick={() => handleButtonClick(value)}
+//             className="p-2 bg-gray-200 rounded hover:bg-gray-300"
+//           >
+//             {value}
+//           </button>
+//         ))}
+//         {['0', '.', '=', '+'].map((value) => (
+//           <button
+//             key={value}
+//             onClick={() => (value === '=' ? calculateResult() : handleButtonClick(value))}
+//             className={`p-2 ${
+//               value === '=' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+//             } rounded hover:bg-blue-700`}
+//           >
+//             {value}
+//           </button>
+//         ))}
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default page
